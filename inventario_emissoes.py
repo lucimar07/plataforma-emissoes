@@ -96,3 +96,11 @@ def app_section(nome):
         if total_emissoes > 0:
             st.markdown("🔄 Para neutralizar essas emissões, recomendamos a compra de créditos de carbono de projetos REDD.")
             st.button("Solicitar contato para neutralização")
+            # ⚠️ DEBUG: Visualizar usuários cadastrados (para testes)
+with st.expander("🔒 Visualizar usuários cadastrados (debug)"):
+    if os.path.exists("usuarios.csv"):
+        usuarios = pd.read_csv("usuarios.csv")
+        st.dataframe(usuarios)
+    else:
+        st.warning("Nenhum usuário cadastrado ainda.")
+
