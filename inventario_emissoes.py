@@ -37,5 +37,22 @@ if st.button("Calcular Emissões"):
         dados.to_csv("dados_emissoes.csv", index=False)
     else:
         dados.to_csv("dados_emissoes.csv", mode='a', header=False, index=False)
+        # 📥 Baixar dados coletados (somente se existir o arquivo)
+st.subheader("📊 Relatório de inventários enviados")
+
+if os.path.exists("dados_emissoes.csv"):
+    dados_salvos = pd.read_csv("dados_emissoes.csv")
+    st.dataframe(dados_salvos)
+
+    csv = dados_salvos.to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="⬇️ Baixar inventários em CSV",
+        data=csv,
+        file_name="inventarios_emissoes.csv",
+        mime="text/csv"
+    )
+else:
+    st.info("Nenhum inventário registrado ainda.")
+
 
 
