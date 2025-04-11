@@ -24,11 +24,15 @@ def carregar_usuarios():
 
 def autenticar_usuario(nome, senha):
     usuarios = carregar_usuarios()
+    usuarios["nome"] = usuarios["nome"].astype(str).str.strip()
+    usuarios["senha"] = usuarios["senha"].astype(str).str.strip()
+
     user = usuarios[
-        (usuarios["nome"].str.strip() == nome) &
-        (usuarios["senha"].str.strip() == senha)
+        (usuarios["nome"] == nome) &
+        (usuarios["senha"] == senha)
     ]
     return not user.empty
+
 
 # ---------------- Página principal ----------------
 
