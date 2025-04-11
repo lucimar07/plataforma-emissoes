@@ -33,26 +33,14 @@ if st.button("Calcular Emissões"):
         "emissoes_ton_CO2e": [emissoes]
     })
 
-    if not os.path.exists("dados_emissoes.csv"):
-        dados.to_csv("dados_emissoes.csv", index=False)
-    else:
-        dados.to_csv("dados_emissoes.csv", mode='a', header=False, index=False)
-        # 📥 Baixar dados coletados (somente se existir o arquivo)
-st.subheader("📊 Relatório de inventários enviados")
+ # ⚠️ Esta parte só será acessada por você diretamente no arquivo CSV, sem exibição no app
+# Os dados são salvos no arquivo 'dados_emissoes.csv' no diretório da aplicação
 
-if os.path.exists("dados_emissoes.csv"):
-    dados_salvos = pd.read_csv("dados_emissoes.csv")
-    st.dataframe(dados_salvos)
+st.markdown("---")
+st.info("✅ Seus dados foram registrados com sucesso.")
+st.markdown("Você pode entrar em contato com nossa equipe para receber um relatório completo e um selo de neutralização.")
 
-    csv = dados_salvos.to_csv(index=False).encode("utf-8")
-    st.download_button(
-        label="⬇️ Baixar inventários em CSV",
-        data=csv,
-        file_name="inventarios_emissoes.csv",
-        mime="text/csv"
-    )
-else:
-    st.info("Nenhum inventário registrado ainda.")
+
 
 
 
