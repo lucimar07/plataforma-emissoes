@@ -1,106 +1,41 @@
 import streamlit as st
 import pandas as pd
-import csv
 import os
 
-st.set_page_config(page_title="Inventário de Emissões", page_icon="🌱", layout="centered")
+st.set_page_config(page_title="Inventário de Emissões", layout="centered")
 
-# ---------------- Funções auxiliares ----------------
+st.title("🌱 Plataforma de Inventário de Emissões - Pará")
 
-def salvar_usuario(nome, senha):
-    if not os.path.exists("usuarios.csv"):
-        with open("usuarios.csv", mode="w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["nome", "senha"])
-    with open("usuarios.csv", mode="a", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow([nome, senha])
+# Interface principal (sem login por enquanto)
+st.subheader("Preencha os dados da sua empresa")
 
-def carregar_usuarios():
-    if os.path.exists("usuarios.csv"):
-        return pd.read_csv("usuarios.csv")
+empresa = st.text_input("Nome da empresa")
+ano_base = st.number_input("Ano base do inventário", min_value=2000, max_value=2050, step=1)
+consumo_energia = st.number_input("Consumo de energia elétrica (kWh)")
+combustivel = st.number_input("Consumo de combustíveis (litros)")
+viagens = st.number_input("Quantidade de viagens de transporte (km)")
+residuos = st.number_input("Quantidade de resíduos gerados (kg)")
+
+if st.button("Calcular Emissões"):
+    # Cálculo simplificado de emissões (exemplo didático)
+    emissoes = (consumo_energia * 0.000055) + (combustivel * 0.0025) + (viagens * 0.00021) + (residuos * 0.001)
+
+    st.success(f"Emissões totais estimadas: {emissoes:.2f} toneladas de CO₂e")
+
+    # Salvar dados (se quiser armazenar)
+    dados = pd.DataFrame({
+        "empresa": [empresa],
+        "ano_base": [ano_base],
+        "energia_kwh": [consumo_energia],
+        "combustivel_l": [combustivel],
+        "viagens_km": [viagens],
+        "residuos_kg": [residuos],
+        "emissoes_ton_CO2e": [emissoes]
+    })
+
+    if not os.path.exists("dados_emissoes.csv"):
+        dados.to_csv("dados_emissoes.csv", index=False)
     else:
-        return pd.DataFrame(columns=["nome", "senha"])
+        dados.to_csv("dados_emissoes.csv", mode='a', header=False, index=False)
 
-def autenticar_usuario(nome, senha):
-    usuarios = carregar_usuarios()
-    usuarios["nome"] = usuarios["nome"].astype(str).str.strip()
-    usuarios["senha"] = usuarios["senha"].astype(str).str.strip()
-
-    user = usuarios[
-        (usuarios["nome"] == nome) &
-        (usuarios["senha"] == senha)
-    ]
-    return not user.empty
-
-
-# ---------------- Página principal ----------------
-
-st.title("🌿 Plataforma de Inventário de Emissões")
-st.markdown("Democratizando a neutralização de emissões para pequenos e médios negócios.")
-
-menu = ["Login", "Cadastrar nova empresa"]
-opcao = st.sidebar.selectbox("Menu", menu)
-
-# ---------------- Cadastro ----------------
-
-if opcao == "Cadastrar nova empresa":
-    st.subheader("Cadastro")
-    nome = st.text_input("Nome da empresa").strip()
-    senha = st.text_input("Senha", type="password").strip()
-    if st.button("Cadastrar"):
-        if not nome or not senha:
-            st.error("Preencha todos os campos.")
-        else:
-            salvar_usuario(nome, senha)
-            st.success("Cadastro realizado com sucesso!")
-
-# ---------------- Login ----------------
-
-else:
-    st.subheader("Login")
-    nome = st.text_input("Nome da empresa").strip()
-    senha = st.text_input("Senha", type="password").strip()
-    if st.button("Entrar"):
-        if autenticar_usuario(nome, senha):
-            st.success(f"Bem-vindo(a), {nome}!")
-            # Conteúdo principal após login
-            app_section(nome)
-        else:
-            st.error("Nome ou senha incorretos.")
-
-# ---------------- Conteúdo principal ----------------
-
-def app_section(nome):
-    st.header("📄 Preencher Inventário de Emissões")
-    st.markdown(f"Empresa: **{nome}**")
-
-    tipo_negocio = st.selectbox("Qual é o tipo do seu negócio?", ["Restaurante", "Loja", "Serviço", "Outro"])
-    consumo_energia = st.number_input("Consumo mensal de energia elétrica (kWh)", min_value=0.0)
-    consumo_combustivel = st.number_input("Consumo mensal de combustíveis (litros)", min_value=0.0)
-    deslocamentos = st.number_input("Deslocamentos mensais a trabalho (km)", min_value=0.0)
-
-    if st.button("Calcular emissões"):
-        fator_energia = 0.000054  # tCO2/kWh
-        fator_combustivel = 0.0023  # tCO2/litro (média)
-        fator_deslocamento = 0.00021  # tCO2/km
-
-        total_emissoes = (
-            consumo_energia * fator_energia +
-            consumo_combustivel * fator_combustivel +
-            deslocamentos * fator_deslocamento
-        )
-
-        st.success(f"Emissões estimadas: **{total_emissoes:.4f} tCO₂e/mês**")
-
-        if total_emissoes > 0:
-            st.markdown("🔄 Para neutralizar essas emissões, recomendamos a compra de créditos de carbono de projetos REDD.")
-            st.button("Solicitar contato para neutralização")
-            # ⚠️ DEBUG: Visualizar usuários cadastrados (para testes)
-with st.expander("🔒 Visualizar usuários cadastrados (debug)"):
-    if os.path.exists("usuarios.csv"):
-        usuarios = pd.read_csv("usuarios.csv")
-        st.dataframe(usuarios)
-    else:
-        st.warning("Nenhum usuário cadastrado ainda.")
 
