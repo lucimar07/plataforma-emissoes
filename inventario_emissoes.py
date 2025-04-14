@@ -20,35 +20,22 @@ residuos = st.number_input("Quantidade de resíduos gerados (kg)")
 if st.button("Calcular Emissões"):
     # Cálculo simplificado de emissões (exemplo didático)
     emissoes = (consumo_energia * 0.000055) + (combustivel * 0.0025) + (viagens * 0.00021) + (residuos * 0.001)
-   st.success(f"Emissões totais estimadas: {emissoes:.2f} toneladas de CO₂e")
-# Criar ou adicionar os dados no CSV
-import os
-from datetime import datetime
+       st.success(f"Emissões totais estimadas: {emissoes:.2f} toneladas de CO₂e")
 
-dados = pd.DataFrame({
-    "empresa": [empresa],
-    "ano_base": [ano_base],
-    "energia_kwh": [consumo_energia],
-    "combustivel_l": [combustivel],
-    "viagens_km": [viagens],
-    "residuos_kg": [residuos],
-    "emissoes_ton_CO2e": [emissoes],
-    "data_hora": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
-})
+    # Salvar dados (se quiser armazenar)
+    dados = pd.DataFrame({
+        "empresa": [empresa],
+        "ano_base": [ano_base],
+        "energia_kwh": [consumo_energia],
+        "combustivel_l": [combustivel],
+        "viagens_km": [viagens],
+        "residuos_kg": [residuos],
+        "emissoes_ton_CO2e": [emissoes]
+    })
 
-arquivo_csv = "dados_emissoes.csv"
+    # ⚠️ Esta parte só será acessada por você diretamente no arquivo CSV, sem exibição no app
+    # Os dados são salvos no arquivo 'dados_emissoes.csv' no diretório da aplicação
+    dados.to_csv("dados_emissoes.csv", mode='a', header=not os.path.exists("dados_emissoes.csv"), index=False)
 
-if os.path.exists(arquivo_csv):
-    dados_existentes = pd.read_csv(arquivo_csv)
-    dados = pd.concat([dados_existentes, dados], ignore_index=True)
-
-dados.to_csv(arquivo_csv, index=False)
-
-st.markdown("---")
-st.markdown("Você pode entrar em contato com nossa equipe para receber um relatório completo e um selo de neutralização.")
-
-
-
-
-
-
+    st.markdown("---")
+    st.markdown("Você pode entrar em contato com nossa equipe para receber um relatório completo e um selo de neutralização.")
