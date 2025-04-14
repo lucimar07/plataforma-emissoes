@@ -37,7 +37,6 @@ if st.button("Calcular Emissões"):
 # Os dados são salvos no arquivo 'dados_emissoes.csv' no diretório da aplicação
 
 st.markdown("---")
-st.info("✅ Seus dados foram registrados com sucesso.")
 st.markdown("Você pode entrar em contato com nossa equipe para receber um relatório completo e um selo de neutralização.")
 
 
