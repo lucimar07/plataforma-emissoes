@@ -8,6 +8,8 @@ st.title("🌱 Plataforma de Inventário de Emissões - Pará")
 
 # Interface principal (sem login por enquanto)
 st.subheader("Preencha os dados da sua empresa")
+st.subheader("Preencha o CNPJ da sua empresa")
+
 
 empresa = st.text_input("Nome da empresa")
 ano_base = st.number_input("Ano base do inventário", min_value=2000, max_value=2050, step=1)
