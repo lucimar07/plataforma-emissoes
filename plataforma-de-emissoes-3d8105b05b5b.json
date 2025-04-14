@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "plataforma-de-emissoes",
+  "private_key_id": "3d8105b05b5bec8abd7618609e56ff44342b6d16",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCy9SXGPNzZ5Tbm\nlCfMqrjGm4L4EPBIQa0H2Fiz8g1m5gjVQr0pH8u35BSvfFwoMGOp2uB0EaKSBjy3\nfBqc4183+IgZ1eBgqVe4hCiSBkOyRaG2txzOt52F8+6LkF7nX3xdKgiLaGd9gHHI\nrT34AvZyR5qnbJaIvWLDX/zdRN2qjiQ6yvGv/qt+wzrMzBAPP8sHOOyuFqWA1bnF\n8U/sDRmq7eWxfAnwuBcsSW1OGJDQ35QxrsE0nVrSiPmZOisLQe3NMVCe3ROFvUWc\nZy9OZpoKz0y9csijCtGks1sgGRzj3k/+lRqhd+5H/f4hT6PJbViv4DRQ9TBpChoV\nfTWS2eKrAgMBAAECggEAHLz0xvk+d24Gu0/ZdareJ2QRIShfMyCmL8H/ZKOfTAHu\n3d3CJhjUDIDVDY/z9gQ8olSNgjYpcY0M3Q5R8RXWVFUAo4gkEyxpSNlNm+g49ieW\nc5LDo91QBOiKSzaboZ5E3hUs8BjhCFdtw6MxILh2aR20k+RX5uI65P3Ey/0OInWR\nk9QtXueAlmjrmvZJMP0zfWet8TeiFCIM/2myBpmq/U6WcJfQZlZimnOygr70iHp6\nxEQX6HcIsV/trjlWoTxkTQHvWhNyr/63fqgsinGeG3hsDZamATI+7g+zDGVpTm2z\nuKmKChJp7viLTZ8bSrd7oU+cJDHu1yYSGKBhQzxtiQKBgQD4JQ0kQFB6aXigi5Jn\nmJHA5pAIquzlR88tEBv1RafDIMK+FoUc3UQ8Aop5zsyyyPmIiTCtiKtDzaKqG+U7\nMLhINJpQ1DHjJ8Pl6NYDE3qWdgSiafyvU8zb3gHVw5J8nU9lu017I/eWbeMZovPq\nOagPrZ2AoBocp/1gEnT4cGKZRQKBgQC4n2iGFQiu9PfI/DPr/XPqnuA4fGxgdmrt\nCE8vbRYjmsrkbK9WyXRNsf0Z86VNUDkwaSNyhA4E0H1IomsPRF2EYh8R/HdLTMI5\n6H087ynI9waYstQ8ncvVi/VmaxGj4z2knNg7VtSYZFaP680Dv22P89J3JMK2D9r8\nKGIWoUszLwKBgQDmK8gS1i1QPsELeitlOJoKKlN0FsgCrSc5D3Y/fkrsrli1ZcI3\nUe7XEyxLbE1nkRAVW9vxO5JRJE88Jv/sdXaaU2DIlOtpXxtRCTZqSAkvw2ztEg62\nuq6NS1K8a9pXCLv7C1AFZwljWa6LuyExJCYF1O8BvoA6EIDwOm6Re/2ZWQKBgDPm\n3IOVNjO5Ok+OVypovkWfFHnMwMr9f2HTjC9RA4BO6+r7gu9rAv80omrBTB9IBkvN\nwuFWrno8AnyA7IgGOCQXUZTE3OSWV6Pf8BVJRv3wNDKJU5EW607FYd/BCdyA7btx\nPHiyGGIfExayu5fqIOrvKKPF+dck7fMlhy3FelaRAoGAHBM13Au7v31slQpX5QUb\nv7F+gjx/UAj0DrK0f8BPbeSrfSWl0bey5WxL64A6iWfEuOD8UckllBP1uq8f/GHP\nPHkX45vqmJ2KV0C0s4mhLz9xNS+vLH0h8xI1Cp+/MZaos9gHEJ9XZ/2ALYZghCUS\noY5a1Kim4udx7nHqwWrnqmI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "plataformadeemissoes@plataforma-de-emissoes.iam.gserviceaccount.com",
+  "client_id": "112267774294443685919",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/plataformadeemissoes%40plataforma-de-emissoes.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
