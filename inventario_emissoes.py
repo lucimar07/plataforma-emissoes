@@ -20,8 +20,7 @@ residuos = st.number_input("Quantidade de resíduos gerados (kg)")
 if st.button("Calcular Emissões"):
     # Cálculo simplificado de emissões (exemplo didático)
     emissoes = (consumo_energia * 0.000055) + (combustivel * 0.0025) + (viagens * 0.00021) + (residuos * 0.001)
-       st.success(f"Emissões totais estimadas: {emissoes:.2f} toneladas de CO₂e")
-
+    st.success(f"Emissões totais estimadas: {emissoes:.2f} toneladas de CO₂e")
     # Salvar dados (se quiser armazenar)
     dados = pd.DataFrame({
         "empresa": [empresa],
